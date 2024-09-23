@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js" type="module" defer></script>
+    <script src="nav.js" defer></script>
+</head>
+
+<body>
+    <header class="nav-bar">
+        <button class="mobile-nav-toggle hamburger--emphatic" aria-controls="primary-nav" aria-expanded="false">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+            <span class="sr-only">Menu</span>
+        </button>
+        <nav>
+            <ul class="primary-nav flex" id="primary-nav" data-visible="false">
+                <li class="">
+                    <a href="">
+                        Home
+                    </a>
+                </li>
+                <li class="">
+                    <a href="">
+                        Weather Map
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="date-time-location-container flex">
+            <div class="location-data">
+                <h2 class="location-name">
+                    Generic Location
+                </h2>
+                <p class="country">
+                    US
+                </p>
+            </div>
+            <div class="date-time flex">
+                <div class="twelve-hour-time-container flex">
+                    <h2 class="12-hour-time" id="12-hour">
+
+                    </h2>
+                    <div id="am-pm"></div>
+                </div>
+                <p class="24-hour-time" id="24-hour">
+
+                </p>
+                <p class="date" id="date">
+
+                </p>
+            </div>
+        </section>
+        <section class="today-forcast flex-column">
+            <div class="current-weather-container flex">
+                <div class="current-temp flex-column" id="current-temp">
+                    4.57&deg;C <span class="feels-like" id="feels-like">Feels like: 3.4&deg;</span>
+                </div>
+                <div class="weather-icon">
+                    <img src="https://openweathermap.org/img/wn/01n@2x.png" alt="Clear" id="weather-icon-image">
+                </div>
+            </div>
+            <div class="min-max-type-container flex">
+                <div class="current-min-max" id="current-min-max">
+                    L:2.8&deg;C H:6.26&deg;C
+                </div>
+                <div class="current-weather-description" id="current-description">
+                    clear sky
+                </div>
+            </div>
+        </section>
+        <section class="five-day-forcast">
+
+        </section>
+    </main>
+</body>
+
+</html>

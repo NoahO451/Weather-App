@@ -1,0 +1,308 @@
+@import url("https://fonts.googleapis.com/css2?family=Merienda:wght@300;400;700&display=swap");
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: rgb(232, 219, 245);
+    font-family: 'Merienda', Helvetica, sans-serif;
+    color: hsl(0, 0%, 20%);
+    overflow-x: hidden;
+}
+
+main {
+    background: linear-gradient(rgba(245, 245, 202, 0), rgba(245, 245, 202, 1));
+    height: 70svh;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.sr-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Primary Nav Bar */
+.nav-bar-item-container {
+    align-items: center;
+}
+
+.primary-nav {
+    list-style: none;
+    padding: 0;
+    gap: 1.5rem;
+    font-size: 18px;
+    background: hsl(0 0% 65% / .8);
+    /*Come back and see how this looks later.*/
+}
+
+.mobile-nav-toggle {
+    display: none;
+}
+
+@supports (backdrop-filter: blur()) {
+    .primary-nav {
+        background: hsl(0 0% 65% / .5);
+        backdrop-filter: blur(.5rem);
+    }
+}
+
+.primary-nav a {
+    text-decoration: none;
+    color: hsl(0, 0%, 20%);
+}
+
+@media (max-width: 35em) {
+    .primary-nav {
+        text-align: right;
+        position: fixed;
+        z-index: 1000;
+        inset: 0 35% 0 0;
+        flex-direction: column;
+        padding: min(20vh, 10rem) 2rem;
+        /*This allows the menu to look good in a landscape phone*/
+
+        transform: translateY(-100%);
+        transition: transform 350ms ease-out;
+    }
+
+    .primary-nav[data-visible="true"] {
+        transform: translateY(0);
+    }
+
+    .mobile-nav-toggle {
+        position: absolute;
+        z-index: 9999;
+        display: block;
+        background: none;
+        border: 0;
+        top: .7rem;
+        left: .7rem;
+    }
+}
+
+.date-time-location-container {
+    justify-content: space-between;
+    padding: 10px;
+    padding-top: 3rem;
+}
+
+.location-data {
+    font-size: 14px;
+}
+
+.date-time {
+    font-size: 12px;
+    flex-direction: column;
+    text-align: right;
+}
+
+.twelve-hour-time-container {
+    gap: 4px;
+    align-items: end;
+    justify-content: right;
+}
+
+/* Hamburger from AMBURGERS Tasty CSS-animated hamburgers */
+
+.hamburger {
+    padding: 15px 15px;
+    display: inline-block;
+    cursor: pointer;
+    transition-property: opacity, filter;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+    font: inherit;
+    color: inherit;
+    text-transform: none;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    overflow: visible;
+}
+
+.hamburger:hover {
+    opacity: 0.7;
+}
+
+.hamburger.is-active:hover {
+    opacity: 0.7;
+}
+
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::before,
+.hamburger.is-active .hamburger-inner::after {
+    background-color: hsl(0, 0%, 20%);
+}
+
+.hamburger-box {
+    width: 40px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -2px;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+    width: 40px;
+    height: 4px;
+    background-color: hsl(0, 0%, 20%);
+    border-radius: 4px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+    content: "";
+    display: block;
+}
+
+.hamburger-inner::before {
+    top: -10px;
+}
+
+.hamburger-inner::after {
+    bottom: -10px;
+}
+
+/* Emphatic */
+.hamburger--emphatic {
+    overflow: hidden;
+}
+
+.hamburger--emphatic .hamburger-inner {
+    transition: background-color 0.125s 0.175s ease-in;
+}
+
+.hamburger--emphatic .hamburger-inner::before {
+    left: 0;
+    transition: transform 0.125s cubic-bezier(0.6, 0.04, 0.98, 0.335), top 0.05s 0.125s linear, left 0.125s 0.175s ease-in;
+}
+
+.hamburger--emphatic .hamburger-inner::after {
+    top: 10px;
+    right: 0;
+    transition: transform 0.125s cubic-bezier(0.6, 0.04, 0.98, 0.335), top 0.05s 0.125s linear, right 0.125s 0.175s ease-in;
+}
+
+.hamburger--emphatic.is-active .hamburger-inner {
+    transition-delay: 0s;
+    transition-timing-function: ease-out;
+    background-color: transparent !important;
+}
+
+.hamburger--emphatic.is-active .hamburger-inner::before {
+    left: -80px;
+    top: -80px;
+    transform: translate3d(80px, 80px, 0) rotate(45deg);
+    transition: left 0.125s ease-out, top 0.05s 0.125s linear, transform 0.125s 0.175s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.hamburger--emphatic.is-active .hamburger-inner::after {
+    right: -80px;
+    top: -80px;
+    transform: translate3d(-80px, 80px, 0) rotate(-45deg);
+    transition: right 0.125s ease-out, top 0.05s 0.125s linear, transform 0.125s 0.175s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/* Emphatic Reverse */
+.hamburger--emphatic-r {
+    overflow: hidden;
+}
+
+.hamburger--emphatic-r .hamburger-inner {
+    transition: background-color 0.125s 0.175s ease-in;
+}
+
+.hamburger--emphatic-r .hamburger-inner::before {
+    left: 0;
+    transition: transform 0.125s cubic-bezier(0.6, 0.04, 0.98, 0.335), top 0.05s 0.125s linear, left 0.125s 0.175s ease-in;
+}
+
+.hamburger--emphatic-r .hamburger-inner::after {
+    top: 10px;
+    right: 0;
+    transition: transform 0.125s cubic-bezier(0.6, 0.04, 0.98, 0.335), top 0.05s 0.125s linear, right 0.125s 0.175s ease-in;
+}
+
+.hamburger--emphatic-r.is-active .hamburger-inner {
+    transition-delay: 0s;
+    transition-timing-function: ease-out;
+    background-color: transparent !important;
+}
+
+.hamburger--emphatic-r.is-active .hamburger-inner::before {
+    left: -80px;
+    top: 80px;
+    transform: translate3d(80px, -80px, 0) rotate(-45deg);
+    transition: left 0.125s ease-out, top 0.05s 0.125s linear, transform 0.125s 0.175s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.hamburger--emphatic-r.is-active .hamburger-inner::after {
+    right: -80px;
+    top: 80px;
+    transform: translate3d(-80px, -80px, 0) rotate(45deg);
+    transition: right 0.125s ease-out, top 0.05s 0.125s linear, transform 0.125s 0.175s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/* Main body of the website */
+
+.current-weather-container {
+    justify-content: space-between;
+    margin-top: 2rem;
+    align-items: center;
+}
+
+.current-temp {
+    padding: 2rem;
+    font-size: 32px;
+}
+
+.feels-like {
+    font-size: 16px;
+}
+
+.weather-icon {
+    padding-right: 3rem;
+}
+
+.min-max-type-container {
+    justify-content: space-between;
+}
+
+.current-min-max {
+    padding: .5rem;
+    margin-left: 1.5rem;
+}
+
+.current-weather-description {
+    padding: .5rem;
+    margin-right: 3rem;
+}
